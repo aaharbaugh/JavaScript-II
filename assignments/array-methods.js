@@ -68,7 +68,6 @@ console.log(allCaps);
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
 let largeShirts = runners.filter(runner => runner.shirt_size === 'L');
-
 console.log(largeShirts);
 
 // ==== Challenge 4: Use .reduce() ====
@@ -81,6 +80,19 @@ console.log(ticketPriceTotal);
 
 // Problem 1
 
+//all runner names to caps to create runner id tags
+console.log(runners.map(runner => `${runner.first_name.toUpperCase()} ${runner.id}` ))
+
 // Problem 2
+//all runner names and the company's the represent. Only includes donors over $200
+
+const bigDonors = runners.filter(runner => runner.donation > 200);
+console.log(bigDonors.map(runner => `Gold Donor: ${runner.first_name} from ${runner.company_name}` ))
 
 // Problem 3
+
+//total of all donations under $200. 
+const smallDonors = runners.filter(runner => runner.donation < 200);
+let smallDonationTotal = smallDonors.reduce((total, runner) => total + runner.donation, 0);
+
+console.log(`Small Donations totaled ${smallDonationTotal}`)
